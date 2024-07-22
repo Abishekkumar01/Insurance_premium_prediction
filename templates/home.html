@@ -161,6 +161,8 @@
 
 
 <!-- ------------------------------------------------------------------------------------- -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,63 +174,85 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: rgba(243, 244, 246, 1);
         }
         header {
-            background-color: #ff6f61;
-            color: white;
+            background-color: rgba(17, 24, 39, 1);
+            color: rgba(243, 244, 246, 1);
             padding: 1rem;
             text-align: center;
         }
         .container {
-            width: 80%;
-            margin: 0 auto;
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
             padding: 2rem;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(17, 24, 39, 1);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        h1 {
-            color: #333;
+        h1, h2 {
+            color: #ffffff;
         }
-        button {
-            background-color: #ff6f61;
+        .intro-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: rgba(167, 139, 250, 1);
             border: none;
-            color: white;
-            padding: 10px 20px;
+            color: rgba(17, 24, 39, 1);
+            padding: 0.75rem 1.5rem;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: #ff4d4d;
-        }
-        img {
-            border-radius: 50%;
-            border: 3px solid #ff6f61;
-            margin-right: 20px; /* Adjust spacing here */
+        .cta-button:hover {
+            background-color: rgba(156, 163, 175, 1);
+            color: rgba(17, 24, 39, 1);
         }
         .profile-section {
             display: flex;
             align-items: center;
-            margin-bottom: 2rem; /* Space below the profile section */
+            margin: 2rem 0;
+        }
+        .profile-section img {
+            border-radius: 50%;
+            border: 3px solid rgba(167, 139, 250, 1);
+            margin-right: 1.5rem;
         }
         .profile-section div {
-            max-width: 60%;
+            max-width: 70%;
         }
         .project-details {
-            background-color: #eaeaea;
+            background-color: rgba(17, 24, 39, 1);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 0.375rem;
+        }
+        .project-details h2 {
+            color: #ffffff;
+        }
+        .project-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .project-details li {
+            color: rgba(156, 163, 175, 1);
         }
         footer {
             text-align: center;
             padding: 1rem;
-            background-color: #ff6f61;
-            color: white;
+            background-color: rgba(17, 24, 39, 1);
+            color: rgba(243, 244, 246, 1);
         }
     </style>
 </head>
@@ -237,13 +261,14 @@
         <h1>Insurance Premium Charges Prediction</h1>
     </header>
     <div class="container">
-        <h2>Welcome to the Insurance Prediction Project</h2>
-        <p>This project aims to predict insurance premiums based on various factors. The goal is to provide accurate and reliable predictions to help in understanding insurance costs.</p>
-        
-        <a href="/project"><button>Go to Project</button></a>
-        
+        <div class="intro-section">
+            <h2>Welcome to the Insurance Prediction Project</h2>
+            <p>This project aims to predict insurance premiums based on various factors such as age, sex, BMI, number of children, smoking status, and region. The goal is to provide accurate and reliable predictions to help in understanding and managing insurance costs effectively.</p>
+            <a href="/project" class="cta-button">Go to Project</a>
+        </div>
+
         <hr>
-        
+
         <div class="profile-section">
             <img src=".\static\image\my pic .jpg" alt="Abishek Kumar" height="150">
             <div>
@@ -251,23 +276,37 @@
                 <p>Hi, I'm Abishek Kumar, a passionate developer working on machine learning and web development projects. I specialize in creating efficient models for data predictions and developing interactive web applications.</p>
             </div>
         </div>
-        
+
         <hr>
-        
+
         <div class="project-details">
             <h2>Project Details</h2>
-            <p>This project uses the following libraries:</p>
+            <p><strong>Data and Analysis:</strong></p>
+            <p><strong>Data Preparation:</strong> The dataset includes features such as age, sex, BMI, number of children, smoking status, region, and charges. We perform data preprocessing steps like one-hot encoding and mapping categorical variables to numerical values.</p>
+            <p><strong>Feature Engineering:</strong> We categorize BMI into different health classes (Underweight, Healthy Weight, Overweight, Obese) and analyze the average charges for each class.</p>
+            <p><strong>Model Training:</strong></p>
             <ul>
-                <li>Flask</li>
-                <li>Scikit-learn</li>
-                <li>SQLite</li>
-                <li>HTML/CSS</li>
+                <li><strong>Linear Regression:</strong> For modeling the linear relationship between features and charges.</li>
+                <li><strong>Decision Tree Regressor:</strong> To capture non-linear relationships and interactions between features.</li>
+                <li><strong>Random Forest Regressor:</strong> To improve prediction accuracy through ensemble learning.</li>
+            </ul>
+            <p><strong>Evaluation:</strong> Models are evaluated using training and testing scores to assess their performance. The best-performing models are saved for future use.</p>
+            <p><strong>Visualization:</strong> Various visualizations such as heatmaps, bar charts, and pie charts are used to display the distribution of health categories and model performance.</p>
+            <p><strong>Outcome:</strong> By accurately predicting insurance premiums, the project addresses the problem of understanding and managing insurance costs effectively. It provides valuable insights for both customers and insurers, helping in financial planning and decision-making.</p>
+            <p><strong>Libraries Used:</strong></p>
+            <ul>
+                <li><strong>Flask:</strong> For creating the web application and handling server-side logic.</li>
+                <li><strong>Scikit-learn:</strong> For building and evaluating machine learning models.</li>
+                <li><strong>SQLite:</strong> For managing and storing project data.</li>
+                <li><strong>HTML/CSS:</strong> For designing and styling the web interface.</li>
+                <li><strong>Numpy:</strong> For numerical operations and handling arrays.</li>
+                <li><strong>Pandas:</strong> For data manipulation and analysis.</li>
+                <li><strong>Matplotlib:</strong> For creating static, interactive, and animated visualizations.</li>
             </ul>
         </div>
-        
-        <footer>
-            <h3>Thanks for visiting our projects!</h3>
-        </footer>
     </div>
+    <footer>
+        <p>© 2024 Insurance Premium Prediction. All rights reserved.</p>
+    </footer>
 </body>
 </html>
