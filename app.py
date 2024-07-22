@@ -31,6 +31,18 @@ def predict():
         gender = int(request.form['gender'])
         bmi = int(request.form['bmi'])
         age = int(request.form['age'])
+
+        smoker_text = 'Yes' if smoker == 1 else 'No'  # **Convert smoker value**
+        gender_text = 'male' if smoker == 1 else 'female'  # **Convert smoker value**
+
+        health_dict = {
+            1: 'Underweight',
+            2: 'Healthyweight',
+            3: 'Overweight',
+            4: 'Obese'
+        }
+        health_text = health_dict.get(health, 'Unknown')  # **Convert health value**
+
         region_northeast = 0
         region_northwest = 0
         region_southeast = 0
@@ -54,7 +66,7 @@ def predict():
         print(prediction)
         conn = sqlite3.connect('insurance.db')
         cur = conn.cursor()
-        Data = (age,gender,bmi,children,region,smoker,health,prediction)
+        Data = (age,gender_text,bmi,children,region,smoker_text,health_text,prediction)
         cur.execute(data_insert_query,Data)
         print("Your data is inserted into database : ",Data)
         conn.commit()
