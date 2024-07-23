@@ -73,7 +73,11 @@ def predict():
         cur.close()
         conn.close()
         return render_template('final.html',output=prediction)
+    
 
+
+
+# -------------------------
 if __name__ == "__main__":
     app.run(debug=True)
 
